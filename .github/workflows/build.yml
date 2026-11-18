@@ -16,6 +16,8 @@ jobs:
 
       - name: Android SDK Kur
         uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 11076708
 
       - name: Gradle Kur
         uses: gradle/actions/setup-gradle@v4
@@ -126,8 +128,6 @@ jobs:
                       return;
                   }
 
-                  XposedBridge.log("[OneUIQS] One UI Home yuklendi, kancalar kuruluyor...");
-
                   Class<?> statusBarManager = XposedHelpers.findClassIfExists(
                           "android.app.StatusBarManager", lpparam.classLoader);
                   if (statusBarManager != null) {
@@ -192,4 +192,4 @@ jobs:
         with:
           name: OneUI-Home-QuickPanel
           path: app/build/outputs/apk/debug/app-debug.apk
-          
+
